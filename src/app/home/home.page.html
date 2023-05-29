@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Firebase App
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-list class="ios list-ios hydrated">
+    <ion-list-header class="ios hydrated">
+      Usuários
+    </ion-list-header>
+    <ion-item *ngFor="let usuario of Usuarios" class="user-list">
+      <ion-label>
+        <h5>
+          <ion-icon name="person"></ion-icon> {{usuario.name}}
+        </h5>
+        <p>
+          <ion-icon name="call"></ion-icon> {{usuario.mobile}}
+        </p>
+      </ion-label>
+      <div class="item-note" item-end>
+        <button ion-button clear [routerLink]="['/update-usuario/', usuario.$key]">
+          <ion-icon name="create" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear (click)="deleteUsuario(usuario.$key)">
+          <ion-icon name="trash" style="zoom:2.0"></ion-icon>
+        </button>
+        <button ion-button clear [routerLink]="['/details-usuario/', usuario.$key]">
+          <ion-icon name="eye" style="zoom:2.0"></ion-icon>
+        </button>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
